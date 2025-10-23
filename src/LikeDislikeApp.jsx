@@ -1,7 +1,7 @@
 import { FaHeart, FaThumbsDown } from 'react-icons/fa';
 import { GrRefresh } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
-import { incrementLikes } from './redux/features/likeDislike/counterSlice';
+import { incrementDislikes, incrementLikes } from './redux/features/likeDislike/counterSlice';
 
 const LikeDislikeApp = () => {
     const { totalLikes, totalDislikes } = useSelector(state => state.likeDislikeCounter);
@@ -23,7 +23,7 @@ const LikeDislikeApp = () => {
             </div>
           </div>
           <div>
-            <div className="text-3xl font-extrabold text-red-500">0
+            <div className="text-3xl font-extrabold text-red-500">{totalDislikes}
             </div>
             <div className="text-sm font-medium text-gray-500 uppercase tracking-wide">
               Total Dislikes
@@ -35,8 +35,8 @@ const LikeDislikeApp = () => {
         <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
           {/* Like Button */}
           <button
-            onClick={() => dispatch(incrementLikes())}
             type="button"
+            onClick={() => dispatch(incrementLikes())}
             className="flex-1 inline-flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-400 transition duration-150 ease-in-out"
           >
             {/* Reverted to inline SVG component */}
@@ -47,6 +47,7 @@ const LikeDislikeApp = () => {
           {/* Dislike Button */}
           <button
             type="button"
+            onClick={() => dispatch(incrementDislikes())}
             className="flex-1 inline-flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400 transition duration-150 ease-in-out"
           >
             {/* Reverted to inline SVG component */}
