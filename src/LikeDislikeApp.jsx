@@ -1,8 +1,11 @@
 import { FaHeart, FaThumbsDown } from 'react-icons/fa';
 import { GrRefresh } from 'react-icons/gr';
+import { useDispatch, useSelector } from 'react-redux';
+import { incrementLikes } from './redux/features/likeDislike/counterSlice';
 
 const LikeDislikeApp = () => {
-    
+    const { totalLikes, totalDislikes } = useSelector(state => state.likeDislikeCounter);
+    const dispatch = useDispatch();
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center font-sans p-4">
       <div className="bg-white w-full max-w-sm p-6 sm:p-8 rounded-xl shadow-lg border border-gray-200">
@@ -13,7 +16,7 @@ const LikeDislikeApp = () => {
         {/* --- Count Display --- */}
         <div className="flex justify-around mb-6 text-center">
           <div>
-            <div className="text-3xl font-extrabold text-green-500">0
+            <div className="text-3xl font-extrabold text-green-500">{totalLikes}
             </div>
             <div className="text-sm font-medium text-gray-500 uppercase tracking-wide">
               Total Likes
@@ -32,6 +35,7 @@ const LikeDislikeApp = () => {
         <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
           {/* Like Button */}
           <button
+            onClick={() => dispatch(incrementLikes())}
             type="button"
             className="flex-1 inline-flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-400 transition duration-150 ease-in-out"
           >
