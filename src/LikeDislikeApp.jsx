@@ -2,6 +2,7 @@ import { FaHeart, FaThumbsDown } from 'react-icons/fa';
 import { GrRefresh } from 'react-icons/gr';
 
 const LikeDislikeApp = () => {
+    
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center font-sans p-4">
       <div className="bg-white w-full max-w-sm p-6 sm:p-8 rounded-xl shadow-lg border border-gray-200">
